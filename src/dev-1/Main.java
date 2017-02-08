@@ -1,9 +1,16 @@
 public class Main {
+    /**
+     * Main class of the application. Contains the entry point
+     */
+    private static final int NUMBER_OPTION = 3;
 
     public static void main(String[] args) {
-        for (int i = 0; i < 3; i++) {
-            int n = (int) Math.floor(Math.random() * args.length);
-            System.out.println(args[n]);
+        ThreeOption threeOption;
+        try {
+            threeOption = new ThreeOption();
+            threeOption.getOption(args, NUMBER_OPTION);
+        } catch (NotEnoughItemsException e) {
+            e.getMessage();
         }
     }
 }
