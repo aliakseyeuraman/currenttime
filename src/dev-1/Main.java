@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 
+/**
+ * Class serves for starting execution of the program
+ */
 public class Main {
     /**
      * Main class of the application. Contains the entry point
+     *@param args - command line arguments
      */
     private static final int NUMBER_OPTION = 3;
 
