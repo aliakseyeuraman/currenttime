@@ -9,12 +9,12 @@ public class ThreeOption {
      * @param args a list of all options
      * @param numberOption the amount required output options
      * @return return a list of the required number of options
-     * @throws NotEnoughItemsException introduced there more than 3 options
+     * @throws Exception do put option
      */
-    public ArrayList<String> getOption(String[] args, int numberOption) throws NotEnoughItemsException {
+    public ArrayList<String> getOption(String[] args, int numberOption) throws Exception {
         ArrayList<String> options = new ArrayList<>();
-        if (args.length < numberOption) {
-            throw new NotEnoughItemsException("You enter less then 3 options");
+        if (args.length == 0) {
+            throw new Exception("you do not enter an option");
         }
         for (int i = 0; i < numberOption; i++) {
             int n = (int) Math.floor(Math.random() * args.length);

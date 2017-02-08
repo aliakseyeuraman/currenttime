@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     /**
      * Main class of the application. Contains the entry point
@@ -8,9 +10,12 @@ public class Main {
         ThreeOption threeOption;
         try {
             threeOption = new ThreeOption();
-            threeOption.getOption(args, NUMBER_OPTION);
-        } catch (NotEnoughItemsException e) {
-            e.getMessage();
+            ArrayList<String> options = threeOption.getOption(args, NUMBER_OPTION);
+            for (String option : options) {
+                System.out.println(option);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 }
