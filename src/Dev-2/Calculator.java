@@ -15,7 +15,6 @@ public class Calculator {
      */
     public void recursion(final String expression, int countOperation) {
         //implement
-        Locale.setDefault(Locale.ENGLISH);
         DecimalFormat df = new DecimalFormat("#.##");
         String value = expression.replaceAll(" ", "");
         int currentCountOperation = countOperation + 1;
