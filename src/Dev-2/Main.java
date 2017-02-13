@@ -11,10 +11,10 @@ public class Main extends Reader {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        System.out.println("введите математиеское выражение:");
+        System.out.println("Enter the expression:");
         String s = bufferedReader.readLine();
         Calculator calculator = new Calculator();
-        System.out.println("Ответ ||" + " Количество операций");
+        System.out.println("Result ||" + "Number of operations");
         calculator.recursion(s, 0);
     }
 }
