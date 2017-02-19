@@ -1,5 +1,5 @@
 /**
- *
+ * Main class of application
  */
 public class Main {
 
