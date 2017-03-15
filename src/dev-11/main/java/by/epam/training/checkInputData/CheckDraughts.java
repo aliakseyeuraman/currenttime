@@ -9,10 +9,12 @@ import by.epam.training.checkInputData.inputException.InputException;
  */
 public class CheckDraughts implements CheckInputData {
     private static final String INVALID_COLOR = "Please, enter 'black' or 'white'!";
-    private static final String NOTHING_ENTER = "You don't enter anything";
-    private static final String INVALID_COORDINATE = "";
-    private static final String WRONG_COUNT_OF_SYMBOLS = "Wrong count of symbols";
-    private static final String THE_SAME = "Start coordinate equals finish coordinate";
+    private static final String NOTHING_ENTER = "You don't enter color!";
+    private static final String NOTHING_ENTER_COORDINATE = "You don't enter coordinate!";
+    private static final String INVALID_COORDINATE = "You enter wrong coordinate!";
+    private static final String WRONG_COUNT_OF_SYMBOLS = "Wrong count of symbols in coordinate!";
+    private static final String THE_SAME = "Start coordinate equals finish coordinate.";
+    private static final int MAX_COUNT_OF_SYMBOLS = 2;
 
     private static final String black = "BLACK";
     private static final String white = "WHITE";
@@ -58,10 +60,10 @@ public class CheckDraughts implements CheckInputData {
      */
     private boolean checkCoordinate(String start) throws InputException {
         boolean flag;
-        if (start.length() > 2) {
+        if (start.length() > MAX_COUNT_OF_SYMBOLS) {
             throw new InputException(WRONG_COUNT_OF_SYMBOLS);
         } else if (start.equals("")) {
-            throw new InputException(NOTHING_ENTER);
+            throw new InputException(NOTHING_ENTER_COORDINATE);
         } else if (!start.matches("[A-Ha-h][1-8]")) {
             flag = false;
         } else {

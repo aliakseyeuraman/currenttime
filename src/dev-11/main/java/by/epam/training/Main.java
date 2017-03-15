@@ -12,7 +12,7 @@ public class Main {
      * @param args Not used
      */
     public static void main(String[] args) {
-        InputData input = new InputData();
-        input.input();//tut объкт возвращает
+        InputData inputData = new InputData();
+        inputData.input();//tut объкт возвращает
     }
 }
