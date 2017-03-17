@@ -1,6 +1,5 @@
 package by.epam.training;
 
-import by.epam.training.bean.Draughts;
 import by.epam.training.findNumberOfSteps.FindNumberOfSteps;
 import by.epam.training.inputData.InputData;
 import by.epam.training.printResult.PrintResult;
