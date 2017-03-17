@@ -1,6 +1,9 @@
 package by.epam.training;
 
+import by.epam.training.bean.Draughts;
+import by.epam.training.findNumberOfSteps.FindNumberOfSteps;
 import by.epam.training.inputData.InputData;
+import by.epam.training.printResult.PrintResult;
 
 /**
  * The main class of project
@@ -13,6 +16,8 @@ public class Main {
      */
     public static void main(String[] args) {
         InputData inputData = new InputData();
-        inputData.input();//tut объкт возвращает
+        FindNumberOfSteps findNumberOfSteps = new FindNumberOfSteps();
+        PrintResult printResult = new PrintResult();
+        printResult.print(findNumberOfSteps.find(inputData.input()));
     }
 }

@@ -3,14 +3,14 @@ package by.epam.training.inputData;
 import java.util.Scanner;
 
 /**
- *
+ * Mother's class for input
  */
-public class Input {
+class Input {
     /**
-     * @param str
-     * @return
+     * @param str string witch you want to print
+     * @return input data
      */
-    protected String input(String str) {
+    String input(String str) {
         Scanner in = new Scanner(System.in);
         String data;
         System.out.println(str);

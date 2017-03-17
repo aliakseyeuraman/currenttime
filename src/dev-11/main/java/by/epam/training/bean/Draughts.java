@@ -1,7 +1,7 @@
 package by.epam.training.bean;
 
 /**
- *
+ * Class draughts witch includes private fields
  */
 public class Draughts {
     private String color;
@@ -12,9 +12,9 @@ public class Draughts {
     }
 
     /**
-     * @param color
-     * @param startPosition
-     * @param finishPosition
+     * @param color          color of draught
+     * @param startPosition  start coordinate of draught
+     * @param finishPosition finish coordinate of draught
      */
     public Draughts(String color, String startPosition, String finishPosition) {
         this.color = color;

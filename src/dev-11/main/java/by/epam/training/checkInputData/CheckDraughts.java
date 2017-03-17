@@ -1,18 +1,18 @@
 package by.epam.training.checkInputData;
 
-
 import by.epam.training.bean.Draughts;
 import by.epam.training.checkInputData.inputException.InputException;
 
 /**
- *
+ * Class for check input data
  */
 public class CheckDraughts implements CheckInputData {
     private static final String INVALID_COLOR = "Please, enter 'black' or 'white'!";
     private static final String NOTHING_ENTER = "You don't enter color!";
     private static final String NOTHING_ENTER_COORDINATE = "You don't enter coordinate!";
-    private static final String INVALID_COORDINATE = "You enter wrong coordinate!";
-    private static final String WRONG_COUNT_OF_SYMBOLS = "Wrong count of symbols in coordinate!";
+    private static final String INVALID_COORDINATE = "You enter wrong coordinate! F.e. 'a1', 'c3', 'h8'.";
+    private static final String WRONG_COUNT_OF_SYMBOLS = "Wrong count of symbols in coordinate!"
+            + "F.e. 'a1', 'c3', 'h8'.";
     private static final String THE_SAME = "Start coordinate equals finish coordinate.";
     private static final int MAX_COUNT_OF_SYMBOLS = 2;
 
@@ -20,9 +20,9 @@ public class CheckDraughts implements CheckInputData {
     private static final String white = "WHITE";
 
     /**
-     * @param draughts
-     * @return
-     * @throws InputException
+     * @param draughts contain information about draught
+     * @return true if all check will be true
+     * @throws InputException input exception
      */
     @Override
     public boolean check(Draughts draughts) throws InputException {
@@ -33,9 +33,9 @@ public class CheckDraughts implements CheckInputData {
     }
 
     /**
-     * @param color
-     * @return
-     * @throws InputException
+     * @param color input color
+     * @return true if input color will be value
+     * @throws InputException input exception
      */
     private boolean checkColor(String color) throws InputException {
         boolean flag;
@@ -54,9 +54,9 @@ public class CheckDraughts implements CheckInputData {
     }
 
     /**
-     * @param start
-     * @return
-     * @throws InputException
+     * @param start input coordinate
+     * @return true if input coordinate will be value
+     * @throws InputException input exception
      */
     private boolean checkCoordinate(String start) throws InputException {
         boolean flag;
@@ -64,7 +64,7 @@ public class CheckDraughts implements CheckInputData {
             throw new InputException(WRONG_COUNT_OF_SYMBOLS);
         } else if (start.equals("")) {
             throw new InputException(NOTHING_ENTER_COORDINATE);
-        } else if (!start.matches("[A-Ha-h][1-8]")) {
+        } else if (!start.matches("[a-h][1-8]")) {
             flag = false;
         } else {
             flag = true;
@@ -76,10 +76,10 @@ public class CheckDraughts implements CheckInputData {
     }
 
     /**
-     * @param start
-     * @param finish
-     * @return
-     * @throws InputException
+     * @param start  input start coordinate
+     * @param finish input finish coordinate
+     * @return true if input start coordinate will be not equals finish coordinate
+     * @throws InputException input exception
      */
     private boolean checkTheSameCoordinates(String start, String finish) throws InputException {
         if (start.equals(finish)) {

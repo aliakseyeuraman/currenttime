@@ -6,7 +6,7 @@ import by.epam.training.checkInputData.CheckDraughts;
 import by.epam.training.checkInputData.inputException.InputException;
 
 /**
- *
+ * Class for input data witch extends of mother's class
  */
 public class InputData extends Input {
     private static final String INPUT_COLOR = "Enter color: ";
@@ -16,7 +16,7 @@ public class InputData extends Input {
     private static final int COUNT_OF_ATTEMPTS = 4;
 
     /**
-     * @return
+     * @return object of draughts
      */
     public Draughts input() {
         CheckDraughts checkDraughts = new CheckDraughts();
@@ -35,8 +35,9 @@ public class InputData extends Input {
                     flag = true;
                 }
                 i++;
+                System.out.println("You have " + (COUNT_OF_ATTEMPTS - i) + " attempt(s)!");
             }
-            System.out.println("You have " + (COUNT_OF_ATTEMPTS - i) + " attempt(s)!");
+
         }
         return draughts;
     }

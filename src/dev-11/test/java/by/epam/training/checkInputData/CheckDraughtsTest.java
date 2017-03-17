@@ -8,6 +8,6 @@ import org.junit.Test;
 public class CheckDraughtsTest {
     @Test
     public void check() throws Exception {
-
+        assert true;
     }
 }
