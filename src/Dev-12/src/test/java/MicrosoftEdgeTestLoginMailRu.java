@@ -12,18 +12,19 @@ import java.util.concurrent.TimeUnit;
 public class MicrosoftEdgeTestLoginMailRu {
     private static final String WEBDRIVER_EDGE_DRIVER = "webdriver.edge.driver";
     private static final String MICROSOFTDRIVER_EXE_PATH = ".\\microsoftEdgedriver\\MicrosoftWebDriver.exe";
+    private static final String SITE = "https://www.mail.ru";
     public WebDriver driver;
 
     @Before
     public void init() {
         System.setProperty(WEBDRIVER_EDGE_DRIVER, MICROSOFTDRIVER_EXE_PATH);
-        driver = new ChromeDriver();
+        driver = new EdgeDriver();
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
     @Test
     public void testSite() {
-        driver = new EdgeDriver();
+        driver.navigate().to(SITE);
     }
 }
