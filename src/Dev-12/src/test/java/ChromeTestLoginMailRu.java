@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Class for testing login on mail.ru
  */
-public class TestLoginMailRu {
+public class ChromeTestLoginMailRu {
     private static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
     private static final String CHROMEDRIVER_EXE_PATH = ".\\chromedriver\\chromedriver.exe";
     private static final String WRITE_LETTER = "Написать письмо";
