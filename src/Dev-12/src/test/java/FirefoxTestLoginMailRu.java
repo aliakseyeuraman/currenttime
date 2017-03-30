@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,9 +15,8 @@ import static org.junit.Assert.assertNotNull;
 /**
  *
  */
-public class FirefoxTestLoginMailRu {
-    private static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
-    private static final String CHROMEDRIVER_EXE_PATH = ".\\chromedriver\\chromedriver.exe";
+public class FirefoxTestLoginMailRu extends BrowsersWebDrivers {
+
     private static final String WRITE_LETTER = "Написать письмо";
     private static final String SITE = "https://www.mail.ru";
     private static final String USER = "tat-dev13";
@@ -29,9 +29,21 @@ public class FirefoxTestLoginMailRu {
             " входа в ваш почтовый ящик.";
     private WebDriver driver;
 
+    @FindBy(xpath = "//div[@id = 'mailbox']//input[@id='mailbox__login']")
+    WebElement login;
+
+    @FindBy(xpath = "//div[@id = 'mailbox']//input[@id='mailbox__password']")
+    WebElement password;
+
+    @FindBy(xpath = "//div[@id = 'mailbox']//input[@id='mailbox__auth__button']")
+    WebElement enter;
+
+    @FindBy(xpath = "b-toolbar__btn__text b-toolbar__btn__text_pad")
+    WebElement letter;
+
     @Before
     public void init() {
-        System.setProperty("webdriver.gecko.driver", ".\\firefoxdriver\\geckodriver.exe");
+        System.setProperty(getWebdriverFirefoxDriver(), getFirefoxdriverExePath());
         driver = new FirefoxDriver();
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -51,15 +63,11 @@ public class FirefoxTestLoginMailRu {
     @Test
     public void testTrueUser() {
         driver.navigate().to(SITE);
-        WebElement login = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__login']"));
         login.clear();
         login.sendKeys(USER);
-        WebElement password = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__password']"));
         password.clear();
         password.sendKeys(PASSWORD);
-        WebElement enter = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__auth__button']"));
         enter.click();
-        WebElement letter = driver.findElement(By.className("b-toolbar__btn__text b-toolbar__btn__text_pad"));
         Assert.assertEquals(WRITE_LETTER, letter.getText());
     }
 
@@ -69,22 +77,19 @@ public class FirefoxTestLoginMailRu {
     @Test
     public void testNullLogin() {
         driver.navigate().to(SITE);
-        WebElement enter = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__auth__button']"));
         enter.click();
         WebElement incorrect = driver.findElement(By.id("mailbox:authfail"));
         Assert.assertEquals(NULLLOGIN, incorrect.getText());
     }
 
     /**
-     * test null password
+     * Test null password
      */
     @Test
     public void testNullPassword() {
         driver.navigate().to(SITE);
-        WebElement login = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__login']"));
         login.clear();
         login.sendKeys(USER);
-        WebElement enter = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__auth__button']"));
         enter.click();
         WebElement incorrect = driver.findElement(By.id("mailbox:authfail"));
         Assert.assertEquals(NULLPASSWORD, incorrect.getText());
@@ -96,13 +101,10 @@ public class FirefoxTestLoginMailRu {
     @Test
     public void testIncorrectUser() {
         driver.navigate().to(SITE);
-        WebElement login = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__login']"));
         login.clear();
         login.sendKeys(INCORRECTLOGIN);
-        WebElement password = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__password']"));
         password.clear();
         password.sendKeys(INCORRECTPASSWORD);
-        WebElement enter = driver.findElement(By.xpath("//div[@id = 'mailbox']//input[@id='mailbox__auth__button']"));
         enter.click();
         WebElement incorrectUser = driver.findElement(By.className("b-login__errors"));
         assertNotNull(incorrectUser);
